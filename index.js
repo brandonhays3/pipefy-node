@@ -1006,7 +1006,7 @@ function Pipefy(config) {
     );
   };
 
-  /*this.updateCardField = function(params) {
+  this.updateCardField = function(params) {
     return rp({
       method: 'POST',
       url: baseUrl,
@@ -1020,7 +1020,7 @@ function Pipefy(config) {
       log.debug('Headers:', JSON.stringify(response.headers));
       log.debug('Response:', body);
     });
-  };*/
+  };
 
   /**
    * Mutation to create a comment to a card, in case of success a query is returned.
