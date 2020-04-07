@@ -1006,6 +1006,15 @@ function Pipefy(config) {
     );
   };
 
+  /**
+   * Mutation to update a field in the card, in case of success a query is returned.
+   * @function
+   * @param {object} params - The comment new data
+   * @param {number} params.card_id - The card id
+   * @param {number} params.field_id - The field  id
+   * @param {object} params.new_value - The new value
+   * @returns A promise with the response body
+   */
   this.updateCardField = function(params) {
     return rp({
       method: 'POST',
@@ -1014,7 +1023,7 @@ function Pipefy(config) {
         'Content-Type': 'application/json',
         'Authorization': bearerToken
       },
-      body: `{ \"query\": \"mutation{ updateCardField(input:{card_id: ${params.card_id}, field_id: \\"${params.field_id}\\", new_value: \"${params.new_value}\"}){ card{ title, current_phase { name, fields {id, label} }, fields{ name, value } } } }\" }`
+      body: `{\"query\": \"mutation{ updateCardField(input: {card_id: ${params.card_id} field_id: \\\"${params.field_id}\\\" new_value: \\\"${params.new_value}\\\" }){ card{ id } } }\"}`
     }, function(error, response, body) {
       log.debug('Status:', response.statusCode);
       log.debug('Headers:', JSON.stringify(response.headers));
